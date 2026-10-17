@@ -20,7 +20,7 @@ prefer-no-csd
 layout {
     gaps 12
     center-focused-column "never"
-    background-color "#1e1e2e"
+    background-color "#14101f"
 
     preset-column-widths {
         proportion 0.33333
@@ -31,8 +31,8 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#89b4fa"
-        inactive-color "#45475a"
+        active-color "#c9a0f0"
+        inactive-color "#3a2f58"
     }
 
     border {
@@ -48,6 +48,7 @@ layout {
     }
 }
 
+spawn-at-startup "qs" "-c" "twilight"
 spawn-at-startup "mako"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' before-sleep 'swaylock -f'"
