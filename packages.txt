@@ -16,3 +16,4 @@ xwayland-satellite
 wireplumber
 playerctl
 pipewire
+gpu-screen-recorder
