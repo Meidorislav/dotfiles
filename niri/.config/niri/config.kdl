@@ -50,7 +50,6 @@ layout {
 
 spawn-at-startup "pipewire"
 spawn-at-startup "qs" "-c" "twilight"
-spawn-at-startup "mako"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' before-sleep 'swaylock -f'"
 
