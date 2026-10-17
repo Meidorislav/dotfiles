@@ -7,3 +7,14 @@ eza
 bat
 zoxide
 stow
+Waybar
+fuzzel
+mako
+swaylock
+swayidle
+nautilus
+polkit-gnome
+firefox
+xwayland-satellite
+wireplumber
+playerctl
