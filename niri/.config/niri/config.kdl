@@ -49,7 +49,8 @@ layout {
 }
 
 spawn-at-startup "pipewire"
-spawn-at-startup "qs" "-c" "twilight"
+// __GL_YIELD: stop the NVIDIA driver from busy-waiting on the GPU, which burns CPU every frame.
+spawn-at-startup "env" "__GL_YIELD=USLEEP" "qs" "-c" "twilight"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "swayidle -w timeout 300 'qs -c twilight ipc call lock lock' timeout 600 'niri msg action power-off-monitors' before-sleep 'qs -c twilight ipc call lock lock'"
 
