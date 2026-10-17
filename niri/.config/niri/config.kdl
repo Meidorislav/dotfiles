@@ -82,7 +82,7 @@ binds {
     // Apps
     Mod+T      hotkey-overlay-title="Terminal: ghostty"     { spawn "ghostty"; }
     Mod+Return hotkey-overlay-title="Terminal: ghostty"     { spawn "ghostty"; }
-    Mod+D      hotkey-overlay-title="Launcher: fuzzel"      { spawn "fuzzel"; }
+    Mod+P      hotkey-overlay-title="Launcher"              { spawn "qs" "-c" "twilight" "ipc" "call" "launcher" "toggle"; }
     Mod+B      hotkey-overlay-title="Browser: firefox"      { spawn "firefox"; }
     Mod+E      hotkey-overlay-title="Files: nautilus"       { spawn "nautilus"; }
     Super+Alt+L hotkey-overlay-title="Lock screen: swaylock" { spawn "swaylock"; }
