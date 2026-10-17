@@ -7,7 +7,7 @@ eza
 bat
 zoxide
 stow
-waybar
+Waybar
 fuzzel
 mako
 swaylock
