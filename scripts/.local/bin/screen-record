@@ -1,7 +1,8 @@
 #!/bin/sh
 # Toggles a screen recording with gpu-screen-recorder: the first run starts
 # recording (niri asks once what to capture and remembers it), the next one
-# stops and saves it to ~/Videos.
+# stops and saves it to ~/Videos. Records the system sound and the default
+# microphone mixed into one track.
 set -e
 
 dir="${XDG_VIDEOS_DIR:-$HOME/Videos}"
@@ -32,6 +33,6 @@ else
     file="$dir/$(date +%Y-%m-%d_%H-%M-%S).mp4"
     echo "$file" > "$state"
     gpu-screen-recorder -w portal -restore-portal-session yes -f 60 \
-        -a default_output -o "$file" >/dev/null 2>&1 &
+        -a "default_output|default_input" -o "$file" >/dev/null 2>&1 &
     notify "Recording started" "Press Mod+Alt+R again to stop"
 fi
