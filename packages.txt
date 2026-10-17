@@ -1,0 +1,9 @@
+niri
+ghostty
+fish-shell
+starship
+fzf
+eza
+bat
+zoxide
+stow
