@@ -1,0 +1,33 @@
+#!/bin/sh
+# Toggles a screen recording with gpu-screen-recorder: the first run starts
+# recording (niri asks once what to capture and remembers it), the next one
+# stops and saves it to ~/Videos.
+set -e
+
+dir="${XDG_VIDEOS_DIR:-$HOME/Videos}"
+state="${XDG_RUNTIME_DIR:-/tmp}/screen-record.path"
+
+notify() {
+    gdbus call --session --dest org.freedesktop.Notifications \
+        --object-path /org/freedesktop/Notifications \
+        --method org.freedesktop.Notifications.Notify \
+        "Screen recorder" 0 "media-record" "$1" "$2" '[]' '{}' 4000 >/dev/null 2>&1 || true
+}
+
+if pgrep -x gpu-screen-recorder >/dev/null; then
+    pkill -INT -x gpu-screen-recorder
+    # Wait for the file to be finalized before announcing it.
+    while pgrep -x gpu-screen-recorder >/dev/null; do
+        sleep 0.2
+    done
+    file=$(cat "$state" 2>/dev/null || true)
+    rm -f "$state"
+    notify "Recording saved" "${file:-$dir}"
+else
+    mkdir -p "$dir"
+    file="$dir/$(date +%Y-%m-%d_%H-%M-%S).mp4"
+    echo "$file" > "$state"
+    gpu-screen-recorder -w portal -restore-portal-session yes -f 60 \
+        -a default_output -o "$file" >/dev/null 2>&1 &
+    notify "Recording started" "Press Mod+Alt+R again to stop"
+fi
