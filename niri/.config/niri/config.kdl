@@ -15,6 +15,11 @@ input {
     }
 }
 
+// LG UltraGear, 2560x1440 at 144 Hz.
+output "DP-1" {
+    scale 1.33
+}
+
 prefer-no-csd
 
 layout {
@@ -49,6 +54,9 @@ layout {
 }
 
 spawn-at-startup "pipewire"
+// Dark theme for GTK4/libadwaita apps (read through the settings portal);
+// gtk-3.0 and gtk-4.0 settings.ini cover the rest.
+spawn-sh-at-startup "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
 // __GL_YIELD: stop the NVIDIA driver from busy-waiting on the GPU, which burns CPU every frame.
 spawn-at-startup "env" "__GL_YIELD=USLEEP" "qs" "-c" "twilight"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
@@ -80,13 +88,11 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Apps
-    Mod+T      hotkey-overlay-title="Terminal: ghostty"     { spawn "ghostty"; }
     Mod+Return hotkey-overlay-title="Terminal: ghostty"     { spawn "ghostty"; }
     Mod+S repeat=false hotkey-overlay-title="Settings" { spawn "qs" "-c" "twilight" "ipc" "call" "settings" "toggle"; }
     Mod+P repeat=false hotkey-overlay-title="Launcher"            { spawn "qs" "-c" "twilight" "ipc" "call" "launcher" "toggle"; }
-    Mod+B      hotkey-overlay-title="Browser: firefox"      { spawn "firefox"; }
     Mod+E      hotkey-overlay-title="Files: nautilus"       { spawn "nautilus"; }
-    Super+Alt+L hotkey-overlay-title="Lock screen" { spawn "qs" "-c" "twilight" "ipc" "call" "lock" "lock"; }
+    Mod+Alt+Shift+L hotkey-overlay-title="Lock screen" { spawn "qs" "-c" "twilight" "ipc" "call" "lock" "lock"; }
 
     // Media
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -170,15 +176,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
 
     // Mouse wheel
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
@@ -206,31 +212,28 @@ binds {
     Mod+Shift+R      { switch-preset-column-width-back; }
     Mod+Ctrl+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R       { reset-window-height; }
-    Mod+F            { maximize-column; }
-    Mod+Shift+F      { fullscreen-window; }
-    Mod+M            { maximize-window-to-edges; }
+    Mod+M            { maximize-column; }
+    Mod+Shift+M      { fullscreen-window; }
     Mod+Ctrl+F       { expand-column-to-available-width; }
-    Mod+C            { center-column; }
-    Mod+Ctrl+C       { center-visible-columns; }
+    Mod+G            { center-column; }
+    Mod+Ctrl+G       { center-visible-columns; }
 
     Mod+Minus       { set-column-width "-10%"; }
     Mod+Equal       { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+T       { toggle-window-floating; }
+    Mod+Shift+T { switch-focus-between-floating-and-tiling; }
     Mod+W       { toggle-column-tabbed-display; }
 
     // Screenshots (saved to ~/Pictures/Screenshots and copied to clipboard)
     Print       { screenshot; }
-    Mod+Shift+S { screenshot; }
     Ctrl+Print  { screenshot-screen; }
     Alt+Print   { screenshot-window; }
 
     // Session
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+E     { quit; }
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P     { power-off-monitors; }
 }
