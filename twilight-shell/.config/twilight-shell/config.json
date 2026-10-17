@@ -1,7 +1,21 @@
 {
+    "clock24h": true,
+    "clockSeconds": false,
+    "cornerRadius": 10,
+    "focusRing": 2,
+    "gaps": 12,
     "live": "stars",
-    "palette": "wallpaper",
+    "mascot": true,
+    "mascotChatter": 0,
+    "mascotMusic": true,
+    "mascotSleep": true,
+    "palette": "twilight",
+    "shadows": true,
+    "showWindowTitle": false,
+    "starsCell": 300,
+    "starsDot": 9,
+    "starsGlow": 0.45,
+    "starsSpeed": 1,
     "wallpaper": "",
-    "wallpaperDir": "/home/meidori/Pictures/Wallpapers",
-    "gaps": 12
+    "wallpaperDir": "/home/meidori/Pictures/Wallpapers"
 }
