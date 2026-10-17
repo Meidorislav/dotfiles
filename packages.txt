@@ -17,3 +17,4 @@ firefox
 xwayland-satellite
 wireplumber
 playerctl
+pipewire
