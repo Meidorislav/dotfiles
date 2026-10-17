@@ -14,10 +14,14 @@ notify() {
         "Screen recorder" 0 "media-record" "$1" "$2" '[]' '{}' 4000 >/dev/null 2>&1 || true
 }
 
-if pgrep -x gpu-screen-recorder >/dev/null; then
-    pkill -INT -x gpu-screen-recorder
+# Matched by command line: process names are cut to 15 characters
+# ("gpu-screen-reco"), so `pgrep -x gpu-screen-recorder` never finds it.
+recorder='^gpu-screen-recorder '
+
+if pgrep -f "$recorder" >/dev/null; then
+    pkill -INT -f "$recorder"
     # Wait for the file to be finalized before announcing it.
-    while pgrep -x gpu-screen-recorder >/dev/null; do
+    while pgrep -f "$recorder" >/dev/null; do
         sleep 0.2
     done
     file=$(cat "$state" 2>/dev/null || true)
