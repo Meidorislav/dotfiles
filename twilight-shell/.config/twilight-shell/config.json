@@ -2,5 +2,6 @@
     "live": "stars",
     "palette": "wallpaper",
     "wallpaper": "",
-    "wallpaperDir": "/home/meidori/Pictures/Wallpapers"
+    "wallpaperDir": "/home/meidori/Pictures/Wallpapers",
+    "gaps": 12
 }
