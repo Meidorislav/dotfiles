@@ -7,7 +7,6 @@ eza
 bat
 zoxide
 stow
-mako
 swaylock
 swayidle
 nautilus
