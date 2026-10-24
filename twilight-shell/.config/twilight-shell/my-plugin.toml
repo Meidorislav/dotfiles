@@ -1,0 +1,10 @@
+# Every setting with its default value. Change what you like.
+
+# Show the card.
+show = false
+
+# What it says.
+greeting = "ЕЩКЕРЕЕЕЕ! ✦"
+
+# The size of the text.
+size = 28

@@ -1,0 +1,4 @@
+# Every setting with its default value. Change what you like.
+
+# What runs apps that need a terminal; the app's command is appended.
+terminal = ["ghostty", "-e"]

@@ -1,0 +1,16 @@
+# Every setting with its default value. Change what you like.
+
+# Where next and prev look for pictures.
+dir = "~/Pictures/Wallpapers"
+
+# A live wallpaper drawn over the picture: "stars", or "" for none. While it is
+# on, the theme doesn't take colors from the picture.
+live = "stars"
+
+[stars]
+# Size of a star, the distance between them, how fast the sky drifts, how far
+# the glow reaches.
+dot = 12
+cell = 280
+speed = 1.8
+glow = 0.4

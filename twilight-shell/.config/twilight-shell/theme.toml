@@ -1,0 +1,8 @@
+# Every setting with its default value. Change what you like.
+
+# The palette: "twilight", a preset ("luna", "rarity", "pinkie", "celestia",
+# "fluttershy", "rainbow"), or "wallpaper" to pick the colors from the picture.
+palette = "twilight"
+
+# The picture to take the colors from; "" for none.
+wallpaper = ""
